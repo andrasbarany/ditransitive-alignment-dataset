@@ -1,0 +1,304 @@
+%TC:ignore
+% arara: xelatex: { options: [ '-no-pdf' ] }
+% arara: biber if found('log', 'run Biber on the file')
+% arara: makeglossaries if changed('glo')
+% arara: xelatex: { options: [ '-no-pdf' ] } if found('log', 'Please rerun')
+% arara: xelatex
+\documentclass{scrartcl}
+
+\title{Case and agreement alignment in ditransitive constructions}
+\subtitle{A typological gap and its explanation}
+\author{}
+\date{}
+%TC:endignore
+
+\usepackage[
+    datamodel=ethiopian,
+    style=unified,
+]{biblatex}
+
+% Ethiopian names
+
+\begin{filecontents*}{ethiopian.dbx}
+\DeclareDatamodelConstant[type=list]{nameparts}{prefix,family,suffix,given,patronymic,papponymic}
+\end{filecontents*}
+
+\DeclareSortingNamekeyTemplate[ethiopian]{
+  \keypart{
+    \namepart{given}
+  }
+  \keypart{
+    \namepart{patronymic}
+  }
+  \keypart{
+    \namepart{papponymic}
+  }
+}
+
+\DeclareUniquenameTemplate[ethiopian]{
+  \namepart[base=true]{given}
+  \namepart[disambiguation=full]{patronymic}
+  \namepart[disambiguation=full]{papponymic}
+}
+
+\DeclareNameAlias{sortname}{family-given}
+
+\DeclareNameFormat{given-family}{%
+  \ifsortingnamekeytemplatename{ethiopian}
+    {\usebibmacro{name:ethiopian}
+       {\namepartgiven}
+       {\namepartpatronymic}
+       {\namepartpapponymic}}
+    {\ifgiveninits
+       {\usebibmacro{name:given-family}
+         {\namepartfamily}
+         {\namepartgiveni}
+         {\namepartprefix}
+         {\namepartsuffix}}
+       {\usebibmacro{name:given-family}
+         {\namepartfamily}
+         {\namepartgiven}
+         {\namepartprefix}
+         {\namepartsuffix}}}%
+  \usebibmacro{name:andothers}}
+
+\DeclareNameFormat{family-given}{%
+  \ifsortingnamekeytemplatename{ethiopian}
+    {\usebibmacro{name:ethiopian}
+       {\namepartgiven}
+       {\namepartpatronymic}
+       {\namepartpapponymic}}
+    {\ifgiveninits
+       {\usebibmacro{name:family-given}
+         {\namepartfamily}
+         {\namepartgiveni}
+         {\namepartprefix}
+         {\namepartsuffix}}
+       {\usebibmacro{name:family-given}
+         {\namepartfamily}
+         {\namepartgiven}
+         {\namepartprefix}
+         {\namepartsuffix}}}%
+  \usebibmacro{name:andothers}}
+
+\DeclareNameFormat{labelname}{%
+  \ifuniquenametemplatename{ethiopian}
+    {\usebibmacro{labelname:ethiopian}}
+    {\usebibmacro{labelname:western}}%
+  \usebibmacro{name:andothers}}
+
+\newbibmacro{labelname:ethiopian}{%
+  \iffieldequalstr{uniquepart}{base}
+    {\usebibmacro{name:ethiopian}
+       {\namepartgiven}
+       {\empty}
+       {\empty}}
+    {\iffieldequalstr{uniquepart}{patronymic}
+       {\usebibmacro{name:ethiopian}
+          {\namepartgiven}
+          {\namepartpatronymic}
+          {\empty}}
+       {\usebibmacro{name:ethiopian}
+          {\namepartgiven}
+          {\namepartpatronymic}
+          {\namepartpapponymic}}}}
+
+\newbibmacro{labelname:western}{%
+  \ifcase\value{uniquename}%
+    \usebibmacro{name:family}
+      {\namepartfamily}
+      {\namepartgiven}
+      {\namepartprefix}
+      {\namepartsuffix}%
+  \or
+    \ifuseprefix
+      {\usebibmacro{name:given-family}
+        {\namepartfamily}
+        {\namepartgiveni}
+        {\namepartprefix}
+        {\namepartsuffixi}}
+      {\usebibmacro{name:given-family}
+        {\namepartfamily}
+        {\namepartgiveni}
+        {\namepartprefixi}
+        {\namepartsuffixi}}%
+  \or
+    \usebibmacro{name:given-family}
+      {\namepartfamily}
+      {\namepartgiven}
+      {\namepartprefix}
+      {\namepartsuffix}%
+  \fi}
+
+\newbibmacro*{name:ethiopian}[3]{%
+  \usebibmacro{name:delim}{#1#2#3}%
+  \usebibmacro{name:hook}{#1#2#3}%
+  \mkbibethgiven{#1}%
+  \ifdefvoid{#2}{}{\bibnamedelimd\mkbibethpat{#2}\isdot}%
+  \ifdefvoid{#3}{}{\bibnamedelimd\mkbibethpap{#3}\isdot}}
+
+\let\mkbibethgiven\mkbibnamefamily
+\let\mkbibethpat\mkbibnamegiven
+\let\mkbibethpap\mkbibnamegiven
+
+
+
+\addbibresource{legenda.bib}
+
+\begin{document}
+
+\maketitle
+%\tableofcontents
+
+\newrefcontext[sorting=nyt]
+\printbibliography
+
+\appendix
+
+\subsection{Indirective case and indirective agreement alignment (ICIA)}\label{sapp:icia}
+
+{\footnotesize
+Gorwaa (Afro-Asiatic; \cite[176]{Harvey2018}), Hungarian (Uralic;~personal
+knowledge), Kapampangan (Austronesian; \cites[91, 116, 170,
+195--196]{Mirikitani1972}[249--250]{Mithun1994}), Mekens
+(Tupian; \cite[82]{Galucio2001}), Moksha (Uralic;~Masha Privizentseva, p.c.),
+Puinave (Puinave; \cites[320, 351]{Girón2008}[62--63]{Birchall2014}), Tiriyó
+(Cariban; \cite[512--515]{Meira1999}), Ughele (Austronesian; \cite[110, 129, 159,
+210, 234]{Frostad2012}), Xavánte (Macro-Ge; \cite[177]{Estevam2011}), Yanomama
+(Yanomam; \cite[395, 407, 408--409, 423, 435, 506]{Ferreira2017}).
+}
+
+\subsection{Indirective case and secundative agreement alignment (ICSA)}\label{sapp:icsa}
+
+{\footnotesize
+Alutor (Chukotko-Kamchatkan; \cite{Melcuk1988,BobWur2002}), Amharic
+(Afro-Asiatic; \cite{Baker2012c}), Anindilyakwa (Gunwinyguan; \cite[305--307,
+315, 334, 361, 398, 400, 413--414, 414, 501]{Leeding1989}), Arammba
+(Yam; \cite[228--230]{Reesink2013}), Bantawa (Sino-Tibetan; \cite[143, 180, 201,
+215]{Doornenbal2009}), Bawm (Sino-Tibetan; \cite[24--25, 93, 103, 122, 149,
+157--158, 161]{Reichle1981}), Burushaski (Burushaski; \cite{Baker2015b}) Chukchi
+(Chukotko-Kamchatkan; \cite{Melcuk1988,Dunn1999,BobWur2002}), Gidar
+(Afro-Asiatic; \cite[174--185]{Frajzyngier2008}), Hyow
+(Sino-Tibetan; \cite[179]{Peterson2003}), Ika (Chibchan; \cites[28,
+67]{Frank1985}{Landaburu1992}), Itelmen
+(Chukotko-Kamchatkan; \cite{BobWur2002}), Jingulu (Mirndi; \cite[105--109,
+212--214, 216--220]{Pensalfini2003}), Kanuri
+(Saharan; \cites[117]{Hutchison1981}{NahawuKanuri1986}[305--308]{Cyffer1978}),
+Komnzo (Yam; \cite[204--207, 227, 229, 294, 317]{Dohler2018}), Koryak
+(Chukotko-Kamchatkan; \cites{Abramovitz2020,Abramovitz2021}, p.c.), Kwomtari
+(Kwomtari-Baibai; \cite[109--110]{Spencer2008}), Mauwake (Trans-New
+Guinea; \cite[162--164, 260--262]{Berghaell2015}), Menya (Trans-New
+Guinea; \cite[22--25, 84]{Whitehead2006}), Miskito
+(Misumalpan; \cite[106]{Salamanca2008}), Ngkolmpu (Yam
+(Morehead-Maro); \cite[148--149]{Carroll2016}), Podoko (Afro-Asiatic; \cite[90,
+103]{Jarvis1989}), Quechua (Yauyos) (Quechuan; \cite[48, 138, 141, 143, 145,
+147, 153]{Shimelman2017}), Rembarnga (Gunwinyguan; \cite[126--127, 143, 258--261,
+263, 297--298]{McKay1975}), Warlpiri (Pama-Nyungan; \cite[170--175]{Legate2002}).
+}
+
+\subsection{Secundative case and secundative agreement alignment (SCSA)}\label{sapp:scsa}
+
+{\footnotesize
+Aguaruna (Jivaroan; \cites[120, 215, 444]{Overall2007}[63]{Birchall2014}), Awa
+Pit (Barbacoan; \cite[73, 74, 76, 102]{Curnow1997}), Gitksan
+(Tsimshianic; \cites[129, 157]{Forbes2018}[4]{BroFor2018}, Clarissa Forbes,
+p.c.), Kalaallisut (Eskimo-Aleut; \cite{Fortescue1984}), Hamtai (Trans-New
+Guinea; \cite[45, 47, 62]{OatOat1968}), Jaqaru (Aymaran; \cite[56, 79, 93,
+103]{Hardman1966}), Kham (Sino-Tibetan; \cite[44, 46,
+54]{Watters1973}[817]{Dryer1986}{Watters2002}), Khanty (Eastern)
+(Uralic; \cite[9]{FGulyas2018}), Khanty (Northern)
+(Uralic; \cite[40]{Nikolaeva1999,DalNik2011}), Kwaza (Kwaza; \cite[106, 110,
+112--113]{vanderVoort2004}), Mansi (Northern) (Uralic; \cite[46]{BirSip2017}),
+Molalla (Molalla; \cite[138, 141, 188--189, 197--199, 205, 210, 243, 268, 277,
+279--280, 305, 315]{Pharris2006}), Movima (Movima; \cite[276, 279, 329, 356,
+404]{Haude2006}), Nez Perce (Sahaptian; \cite{Deal2010,Deal2013,Deal2019}),
+Nlaka’pamux (Salishan; \cite[32]{ThomThom1980}), Selkup
+(Uralic; \cite[34]{WagSze2013}), Squamish (Salishan; \cites[233,
+257]{Kuipers1967}[50]{Kiyosawa2006}), Tsimshian (Coast) (Tsimshianic; \cite[40,
+60, 267]{Sasama2001}), Tukang Besi (Austronesian; \cite[47--50,
+102--103]{Donohue1999}), Tundra Nenets (Uralic; \cite[236]{Nikolaeva2014}), Wari’
+(Chapacua-Wanham; \cite[119]{EveKer1997}), Yup’ik (Central)
+(Eskimo-Aleut; \cite{Miyaoka2010}).
+}
+
+\subsection{Neutral case and secundative agreement alignment (NCSA)}\label{sapp:ncsa}
+
+{\footnotesize
+Ainu (Ainu; \cite[20, 26--27, 29, 56, 86]{Shibatani1990}), Alamblak
+(Sepik; \cite[299, 292, 300, 319--320, 351, 367]{Bruce1979}),  Apurinã
+(Arawakan; \cites[285, 287--292]{Facundes2000}[474--476]{Derbyshire1986}), Bagirmi
+(Central Sudanic; \cite[92--93, 121, 133]{Stevenson1969}[17, 22, 25, 27, 33,
+49--50, 57, 61, 67, 76]{KeeganDjibrine2016}), Barai (Trans-New
+Guinea; \cites[20--21]{Olson1974}{Olson1975}), Beja (Afro-Asiatic; \cites[331,
+1976]{Hudson1964}[6]{Vanhove2019}), Bininj Gun-Wok
+(Gunwinyguan; \cite{Evans1997}), Chayahuita (Balsapuerto)
+(Cahuapanan; \cite[60]{RojasBerscia2013}), Chimariko (Hokan; \cite[147, 152,
+162, 163, 218]{Jany2014}), Chintang
+(Sino-Tibetan; \cite[386--388]{Bickeletal2010}), Choctaw (Muskogean; \cite[44,
+67, 73, 74, 115, 137, 154, 228, 342]{Broadwell2006}), Cree (Plains)
+(Algic; \cite[116--117]{Dahlstrom1986}), Erromangan (Austronesian; \cite[36, 122,
+124, 129, 159, 183, 202, 203, 273]{Crowley1998}), Euchee (Yuchi)
+(Euchee; \cite[142--143, 180--190, 198--200]{Linn2001}), Galela (West
+Papuan; \cite[165--166, 168]{Shelden1991}), Gooniyandi (Bunuban; \cite[106, 153,
+197--198, 216, 227, 334--335, 413--414, 416, 422, 532, 536, 546]{McGregor1990}),
+Huichol (Uto-Aztecan; \cites[99, 108]{Comrie1982}[815]{Dryer1986}), Itonama
+(Itonama; \cite[690]{Crevels2010}), Jaminjung (Mirndi; \cites[180,
+370--371]{Schultze-Berndt2000}[515]{Schultze-Berndt2010}), Jumjum
+(Nilotic; \cite{Andersen2018}, p.c.), Kalapuya (Santiam)
+(Kalapuyan; \cite[13, 36, 80, 86--88, 92, 94]{Banks2007}), Karok
+(Karok; \cite[60, 188--189, 208, 233]{Bright1957}), Keres (Laguna)
+(Keresan; \cite[27, 37, 140--163]{Lachler2006}), Ket (Yeniseian; \cite[357,
+358]{NefMalVaj2010}), Konjo (Austronesian; \cite[141--142, 160, 163--164,
+167--168]{Friberg1996}), Korumu (Kesawai) (Trans-New
+Guinea; \cites[16--18]{Reesink2013b}[101--102]{Priestley2019}), Maba
+(Maban; \cites[132,163, 167, 170, 182, 236, 254, 256, 296, 362, 367, 419,
+432]{Weiss2009}[23--24]{Dimmendaal2010}), Malakmalak (Northern Daly; \cite[61,
+170--173, 175--176, 184]{Birk1974}),  Mangarrayi
+(Mangarrayi--Maran; \cite[64--65]{Merlan1989}), Mapudungun
+(Araucanian; \cite[723]{Golluscio2010}), Maricopa (Hokan; \cite[21, 27, 52, 108,
+200]{Gordon1986}), Mawng (Iwaidjan; \cite[66, 102--103]{Singer2006}), Mosetén
+(Mosetenan; \cite[195]{Sakel2004}), Motuna (East Bouganville; \cite[429,
+14-108b; 2000: 134--137]{Onishi1994}), Muna (Austronesian; \cite[42, 50, 52,
+68--70, 83, 124, 159, 175, 179, 256, 308, 314, 317]{vandenBerg1989}), Mundari
+(Austro-Asiatic; \cite[85--89, 93--94]{Osada1992}), Murle (Eastern
+Sudanic; \cite[48--49, 84, 106--107]{Arensen1982}), Nabak (Trans-New
+Guinea; \cite[26, 42--45, 47, 60, 104, 109, 142]{FabFabWat1998}), Nahuatl
+(Huasteca) (Uto-Aztecan; \cite[207]{BelBel1977} via \cite[842]{Dryer1986}), Nahuatl (Orizaba)
+(Uto-Aztecan; \cite[45--47]{Tuggy1998}), Nambikuára (Southern)
+(Nambikuaran; \cites[4, 12, 52--57, 59--60]{Lowe1999}{Kroeker2001}), Nandi
+(Eastern Sudanic; \cite[98, 169]{CreiCrei1989}), Nasioi (East
+Bouganville; \cite[64, 72]{HurHur1970}), Ngalakan (Gunwinyguan; \cite[50, 77,
+94, 96--97, 103, 162, 166]{Merlan1983}), Oaxaca Chontal (Lowland)
+(Tequistlatecan; \cite[32, 41--43, 207]{OConnor2007}), Ojibwa (Central)
+(Algic; \cite[139]{Rhodes1976} via \cite[812]{Dryer1986}), Palauan
+(Austronesian; \cite[96, 374]{Josephs1975}, via \cite[816]{Dryer1986}), Papapana
+(Austronesian; \cite[236]{Smith-Dennis2020}), Pima Bajo
+(Uto-Aztecan; \cite[193--197]{EstradaFernandez2014}), Pipil (Nawat)
+(Uto-Aztecan; \cite[55--56, 109--110]{Campbell1985}), Sentani (Sentani; \cite[33,
+57, 68, 70--71, 73]{Cowan1965}), Tauya (Trans-New Guinea; \cite[93, 114--115, 119,
+121, 138, 154, 171--172, 216]{MacDonald1990}), Teop
+(Austronesian; \cite[488]{Mosel2010}), Tepehuan (Northern)
+(Uto-Aztecan; \cite[274, 280, 287, 294, 301, 307, 313, 332, 346, 350, 357--358,
+383, 386]{Bascom1982}), Tigrinya
+(Afro-Asiatic; \cites{Nazareth2007,Nazareth2011}), Tiwi (Tiwian; \cite[119,
+230, 235--237, 240--241, 257, 287, 315, 341]{Lee1983}), Turkana (Eastern
+Sudanic; \cite[124; 2009: 2--3, 6]{Dimmendaal1982}), Tzotzil (Mayan; \cite[277,
+280]{Aissen1983}, via \cite[818]{Dryer1986}), Wambaya
+(Mirndi; \cite[137--140]{Nordlinger1998}), Wampis
+(Jivaroan; \cite[428]{Pena2015}), Waray
+(Gunwinyguan; \cite[169--170]{Harvey1986}), Wardaman (Yangmanic; \cite[66--67,
+84, 86, 89, 96--97, 109, 111, 136, 141, 180, 183, 187--188, 192, 197, 212, 217,
+230, 235, 240--241, 250--251, 294, 302, 306--307, 310, 313--314, 322, 341, 360, 365,
+380, 379, 394--395, 404, 457, 460, 463--464, 467--468, 470--471, 509--510, 516, 535,
+542--544, 565, 571--573]{Merlan1994}), Wichi
+(Matacoan; \cite[225--227]{Terraza2009}), Yakkha
+(Sino-Tibetan; \cite[338--341]{Schackow2015}), Yaneshaʹ (Amuesha)
+(Arawakan; \cite[35, 63, 172, 217]{Duff-Tripp1997}), Yukulta
+(Tangkic; \cite[216, 236, 244]{Keen1983}), Yurok (Algic; \cite[73,
+77]{Robins1958}), Zulu (Niger-Congo; \cites{Adams2010}[176,
+232]{Halpert2012}{Zeller2012,Zeller2015}).
+}
+
+
+%TC:endignore
+\end{document}
