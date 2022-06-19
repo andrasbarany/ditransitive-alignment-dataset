@@ -11,6 +11,8 @@ parser.add_argument('language', metavar='language', type=str,
                     help='language')
 parser.add_argument('exno', nargs='*', metavar='exno', type=int,
                     help='example number to print')
+parser.add_argument('style', metavar='style', type=str,
+                    help='leipzig-style glosses or small caps')
 
 
 args = parser.parse_args()
@@ -59,7 +61,7 @@ def latex_ex(style):
 
 def glossify(string, style='expex'):
     if style == 'expex':
-        string = re.sub(r'(\.|-|>)([A-Z]{1,5})',
+        string = re.sub(r'(\.|-|>)([A-Za-z]{1,5})',
                         lambda m: m.group(1) + '\\' +
                         m.group(2).title() + '{}',
                         string)
@@ -79,7 +81,7 @@ def glossify(string, style='expex'):
                         string)
         string = re.sub(r'3(\.|-|>)', r'\\Third\1', string)
     elif style == 'smallcaps':
-        string = re.sub(r'(\.|-|>)([0-9]?[A-Z]{1,5})',
+        string = re.sub(r'(\.|-|>)([0-9]?[A-Za-z]{1,5})',
                         lambda m: m.group(1) + '\\textsc{' +
                         m.group(2).lower() + '}',
                         string)
@@ -111,6 +113,9 @@ def print_lang(language):
 
 
 if len(vars(args)['exno']) > 0:
-    print(latex_ex('expex'))
+    if vars(args)['style'] == 'smallcaps':
+        print(latex_ex('smallcaps'))
+    else:
+        print(latex_ex('expex'))
 else:
     print_exx()
