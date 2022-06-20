@@ -47,12 +47,12 @@ available for `leipzig`.
 \xe
 ```
 
-Instead of using glossing commands, by adding the option `smallcaps`, the output
-uses the LaTeX command `\textsc{}` to format grammatical morphemes in small
-capitals:
+Instead of using glossing commands, by adding the option `--style smallcaps`,
+the output uses the LaTeX command `\textsc{}` to format grammatical morphemes
+in small capitals:
 
 ```
-> ./data.py gorwaa 3 smallcaps
+> ./data.py gorwaa 3 --style smallcaps
 \ex\label{ex:gorwaa-3}
     \begingl
         \glpreamble Gorwaa, SCSA, \parencite[176]{Harvey2018}//

@@ -11,7 +11,7 @@ parser.add_argument('language', metavar='language', type=str,
                     help='language')
 parser.add_argument('exno', nargs='*', metavar='exno', type=int,
                     help='example number to print')
-parser.add_argument('style', metavar='style', type=str,
+parser.add_argument('--style', nargs='?', metavar='style', type=str,
                     help='leipzig-style glosses or small caps')
 
 
