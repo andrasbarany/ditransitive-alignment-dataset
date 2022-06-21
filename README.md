@@ -211,4 +211,4 @@ a whole, feel free to acknowledge its use by citing it:
 Bárány, András & Classe, Nora-Friederike. 2022. *Data set of ditransitive
 alignment patterns*. DOI:
 [10.17605/OSF.IO/K386X](https://doi.org/10.17605/OSF.IO/K386X).
-[https://osf.io/k386x/].
+https://osf.io/k386x/.
