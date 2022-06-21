@@ -22,8 +22,8 @@ properties of the arguments for each data point.
 - `Remarks`: Additional remarks
 - `Source`: Source of example in plain text
 - `Citekey`: biblatex citekey (see [sources.bib](sources.bib))
-- `Page`: Page number of example
-- `Exno`: Example number
+- `Page`: Page number containing example in source
+- `Exno`: Example number in source
 - `AddSourceInfo`: Additional source information if available
 - `Predicate`: Predicate in source language, e.g. *give*
 - `SbjPrs`: Person of subject
