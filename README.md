@@ -190,7 +190,7 @@ secundative case and indirective
 agreement](https://www.lingref.com/cpp/wccfl/38/abstract3549.html). In Rachel
 Soo, Una Y. Chow & Sander Nederveen (eds.), *Proceedings of the 38th West Coast
 Conference on Formal Linguistics*, 43–53. Somerville, MA: Cascadilla
-Pro-ceedings Project.
+Proceedings Project.
 
 ## Using the data
 
