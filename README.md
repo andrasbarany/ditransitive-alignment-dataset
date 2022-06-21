@@ -130,21 +130,21 @@ There are 139 examples with neutral case and secundative agreement alignment
 agreement) is first person:
 
 ```python
-> languages.loc[(languages['Type'] == 'NCSA') & (languages['R-Prs'] == '1')]
-        Language                                           Original                                              Gloss  ... TNbr TGen TCase
-0      Hungarian                            Mari lát-ja a könyv-et.              Mari see-3SG.SBJ>3SG.OBJ the book-ACC  ...   SG  NaN   ACC
-1      Hungarian                       Mari neked ad-ja a könyv-et.     Mari 2SG.DAT give-3SG.SBJ>3SG.OBJ the book-ACC  ...   SG  NaN   ACC
-2         Gorwaa       mwalimú kitaabú ng-u-∅-(g)a hariís dír desír  teacher.LMo book.LMo A.3-P.M-AUX-PRF bring.M.P...  ...   SG    M   NOM
-3         Gorwaa           mwalimú desír ng-a-∅-na kitaabú-i hariís  teacher.LMo girl.LFR A.3-P.F-AUX-IMPRF book.LM...  ...   SG    M   LAT
-4    Kapampangan         Mamye (ya)ng tela ing mestra kareng babai.                    give cloth the teacher to women  ...   SG  NaN   ABS
-..           ...                                                ...                                                ...  ...  ...  ...   ...
-803      Yukulta   tʸina-ŋka ṭat̪int ṭaŋka-ŋala-pakarі miyaḷṭa y...  where-PRES that+ABS man-ŋala-you+TR+PRES spear...  ...   SG   NaN   ABS
-804        Yurok                               nek nahci-s-ek' ci·k                               I give-3SG-1SG money  ...   SG  NaN   NOM
-805        Yurok                                    nek nahci-s-ek'                                     I give-3SG-1SG  ...   SG  NaN   NaN
-806        Yurok                             nek nahci-s-ek' ku cey                               I give-3SG-1SG child  ...   SG  NaN   NaN
-807         Zulu  uMandla u- bona [ukuthi ngi- ya- m- thanda] [u...  AUG.1Mandla 1S- see that 1SG- YA- 1O- like  wh...  ...   PL  NaN   NOM
+> languages.loc[(languages['Type'] == 'NCSA') & (languages['RPrs'] == '1')]
+               Language                                           Original                                              Gloss  ... TNbr TGen     TCase
+142              Movima                       kɑyɬe:-kɑy--isne is lɑwɑ:jes                         give-INV-f.a ART.pl remedy  ...   SG  NaN       NOM
+165            Squamish                           mi-ši-t-c-ka kʷi stáqʷ!                 come-RDR-TR-1.SG.OBJ-IMP DET water  ...   SG  NaN       NOM
+257             Jingulu  Ngunyɑ-ɑnɑ-mi ngɑmɑniki-rni milɑkurrmi-rni, ng...        give-1O-IRR this(v)-FOC yam-FOC give-1O-IRR  ...   PL  NaN       ABS
+321           Rembarnga  tiŋʔ - yiʔ ŋinta - Ø  ŋana - pak - larayʔ - mi...  woman - ERG 1min.PRON - NOM 1min.IMPL + 3aug.A...  ...   SG  NaN  ABS(NOM)
+332                Ainu                                         A-en-kore.                                      2HON-1SG-give  ...   SG  NaN       NaN
+..                  ...                                                ...                                                ...  ...  ...  ...       ...
+797  Yaneshaʹ (Amuesha)                Añach yetsom ñeñt̃ p̃-apa'-nmu-ey.                                    … 2SG-give-?-1PL  ...   SG  NaN       NaN
+798  Yaneshaʹ (Amuesha)  an̄ ye-po·s- aˀt-e·n- a ñeñtʸ pʸ- ahp- aˀn- ...  this 1PL-be drunk-EP- PROG-REFLX which 2SG-giv...  ...   PL  NaN       NOM
+799             Yukulta                     palmpiya-ŋalawa-yiniŋki wu:tʸa        tomorrow-us(OBL)-you(NOM)+FUT give(Vtr)+IND  ...   SG  NaN       NaN
+800             Yukulta                         palmpiya-t̪u-n̩iŋki wu:tʸa                  tomorrow-me(OBL)-he(NOM) give+IND  ...   SG  NaN       NaN
+801             Yukulta                        palmpiya-nk-i-kant i wu:tʸa          tomorrow-me(ACC)-you(NOM)-TR+FUT give+IND  ...   SG  NaN       NaN
 
-[808 rows x 24 columns]
+[139 rows x 24 columns]
 ```
 
 To get the same information in R using `tidyverse`, you can do the following:
