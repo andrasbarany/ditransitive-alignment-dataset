@@ -193,3 +193,22 @@ Conference on Formal Linguistics*, 43–53. Somerville, MA: Cascadilla
 Pro-ceedings Project.
 
 ## Using the data
+
+If you are interested in using any of the data in this data set, please cite
+(and double check) the original source. If you are using the data set as
+a whole, feel free to acknowledge its use by citing it:
+
+```latex
+@online{BaranyClasse2022,
+    author = {Bárány, András and Classe, Nora-Friederike},
+    title = {Data set of ditransitive alignment patterns},
+    year   = {2022},
+    url = {https://osf.io/k386x/},
+    doi = {10.17605/OSF.IO/K386X},
+}
+```
+
+Bárány, András & Classe, Nora-Friederike. 2022. *Data set of ditransitive
+alignment patterns*. DOI:
+[10.17605/OSF.IO/K386X](https://doi.org/10.17605/OSF.IO/K386X).
+[https://osf.io/k386x/].
