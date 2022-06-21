@@ -14,30 +14,30 @@ properties of the arguments for each data point.
 
 `languages.csv` is a CSV file (using `;` as a separator) with 24 columns.
 
-`Language`: Name of language
-`Original`: Original text of examples in source language
-`Gloss`: Gloss (sometimes adapted)
-`Translation`: Translation from source
-`Type`: Case and agreement alignment for ditransitives, Transitive, Intransitive, or Recipient passive
-`Remarks`: Additional remarks
-`Source`: Source of example in plain text
-`Citekey`: biblatex citekey (see [sources.bib](sources.bib))
-`Page`: Page number of example
-`Exno`: Example number
-`AddSourceInfo`: Additional source information if available
-`Predicate`: Predicate in source language, e.g. *give*
-`SbjPrs`: Person of subject
-`SbjNbr`: Number of subject
-`SbjGen`: Gender of subject
-`SbjCase`: Case of subject
-`RPrs`: Person of recipient
-`RNbr`: Number of recipient
-`RGen`: Gender of recipient
-`RCase`: Case of recipient
-`TPrs`: Person of theme/patient
-`TNbr`: Number of theme/patient
-`TGen`: Gender of theme/patient
-`TCase`: Case of theme/patient
+- `Language`: Name of language
+- `Original`: Original text of examples in source language
+- `Gloss`: Gloss (sometimes adapted)
+- `Translation`: Translation from source
+- `Type`: Case and agreement alignment for ditransitives, Transitive, Intransitive, or Recipient passive
+- `Remarks`: Additional remarks
+- `Source`: Source of example in plain text
+- `Citekey`: biblatex citekey (see [sources.bib](sources.bib))
+- `Page`: Page number of example
+- `Exno`: Example number
+- `AddSourceInfo`: Additional source information if available
+- `Predicate`: Predicate in source language, e.g. *give*
+- `SbjPrs`: Person of subject
+- `SbjNbr`: Number of subject
+- `SbjGen`: Gender of subject
+- `SbjCase`: Case of subject
+- `RPrs`: Person of recipient
+- `RNbr`: Number of recipient
+- `RGen`: Gender of recipient
+- `RCase`: Case of recipient
+- `TPrs`: Person of theme/patient
+- `TNbr`: Number of theme/patient
+- `TGen`: Gender of theme/patient
+- `TCase`: Case of theme/patient
 
 In the case of passives, `Type` is `Recipient passive` or `Theme passive`, the
 features of the recipient and the theme are specified, and `SbjPrs`, `SbjNbr`,
