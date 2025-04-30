@@ -185,7 +185,7 @@ bibliographical information of the sources listed in the `citekey` column of
 
 ## Publications using (part of) the data set
 
-Bárány, András. 2024. [Case and agreement alignment in ditransitive constructions: A typological gap and its explanation](https://muse.jhu.edu/pub/24/article/937184). *Language* 100:3, 385–432. DOI: [10.1353/lan.2024.a937184](https://doi.org/10.1353/lan.2024.a937184)
+Bárány, András. 2024. [Case and agreement alignment in ditransitive constructions: A typological gap and its explanation](https://muse.jhu.edu/pub/24/article/937184). *Language* 100(3), 385–432. DOI: [10.1353/lan.2024.a937184](https://doi.org/10.1353/lan.2024.a937184)
 
 Bárány, András. 2021. [A typological gap in ditransitive constructions: No
 secundative case and indirective
